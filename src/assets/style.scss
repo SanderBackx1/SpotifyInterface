@@ -6,6 +6,27 @@ $gray: #333333;
   margin: 0;
   padding: 0;
 }
+.login {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  img {
+    width: 90%;
+  }
+  a {
+    padding: 2em;
+    background-color: $green;
+    border-radius: 5em;
+    color: $white;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+}
 .home {
   background: linear-gradient(rgba(91, 87, 115), rgba(0, 0, 0, 1));
   height: 100vh;

@@ -1,5 +1,5 @@
 <template>
-  <div class="home" id="home">
+  <div class="page">
     <div class="login" v-if="!user">
       <img
         src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
@@ -7,14 +7,16 @@
       />
       <a :href="loginUrl">LOGIN WITH SPOTIFY</a>
     </div>
-    <div class="loggedIn" v-else>
-      <div class="top-bar">
-        <div class="img-name-wrapper">
-          <img :src="user?.images[0]?.url" alt="" />
-          <h4>{{ user?.display_name }}</h4>
-        </div>
-        <div class="wrapper">
-          <Player />
+    <div class="home" id="home" v-if="user">
+      <div class="loggedIn">
+        <div class="top-bar">
+          <div class="img-name-wrapper">
+            <img :src="user?.images[0]?.url" alt="" />
+            <h4>{{ user?.display_name }}</h4>
+          </div>
+          <div class="wrapper">
+            <Player />
+          </div>
         </div>
       </div>
     </div>
