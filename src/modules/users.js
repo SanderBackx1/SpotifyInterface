@@ -18,7 +18,6 @@ export default function useUsers() {
   if (!state.token) {
     let token = window.localStorage.getItem("spotifyToken");
     if (token) state.token = token;
-    console.log(state.token);
   }
 
   return { ...toRefs(state) };

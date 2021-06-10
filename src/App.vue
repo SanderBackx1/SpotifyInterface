@@ -23,13 +23,11 @@ export default {
   created() {
     const hash = getTokenFromUrl();
     const { token } = useUser();
-    console.log("user");
     window.location.hash = "";
     const _token = hash?.access_token;
     if (_token) {
       setToken(_token);
     }
-    console.log(useUser());
     spotify.setAccessToken(_token || token.value);
     spotify.getMe().then((user) => {
       setUser(user);

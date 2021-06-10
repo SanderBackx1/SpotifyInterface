@@ -70,7 +70,6 @@ export default {
       }
     },
     onload() {
-      console.log(":)");
       const fac = new FastAverageColor();
 
       fac
