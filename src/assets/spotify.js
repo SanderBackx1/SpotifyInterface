@@ -7,7 +7,7 @@ import {
 } from "../modules/users";
 export const spotify = new SpotifyWebApi();
 export const authEndpoint = "https://accounts.spotify.com/authorize";
-const redirectUri = "https://spotifyinterface.netlify.app/";
+const redirectUri = "http://localhost:3000/";
 // const redirectUri = "http://localhost:3000";
 const clientId = "eb4f74d520ac4fd2a82c5cc385864822";
 const scopes = [
@@ -34,7 +34,7 @@ export const refreshTrack = () => {
   spotify.getMyCurrentPlaybackState().then((res) => {
     setPlaybackState(res);
     setCurrentTrack(res.item);
-    const tracks = [res.item.id];
+    const tracks = [res.item?.id];
     spotify.containsMySavedTracks(tracks).then((res) => {
       setIsSaved(res);
     });

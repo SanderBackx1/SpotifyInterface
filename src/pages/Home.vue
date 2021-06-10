@@ -5,21 +5,10 @@
         src="https://getheavy.com/wp-content/uploads/2019/12/spotify2019-830x350.jpg"
         alt=""
       />
+
       <a :href="loginUrl">LOGIN WITH SPOTIFY</a>
     </div>
-    <div class="home" id="home" v-if="user">
-      <div class="loggedIn">
-        <div class="top-bar">
-          <div class="img-name-wrapper">
-            <img :src="user?.images[0]?.url" alt="" />
-            <h4>{{ user?.display_name }}</h4>
-          </div>
-          <div class="wrapper">
-            <Player />
-          </div>
-        </div>
-      </div>
-    </div>
+    <LoggedIn />
   </div>
 </template>
 
@@ -27,7 +16,7 @@
 import { loginUrl } from "../assets/spotify";
 import useUser, { setPlaybackState } from "../modules/users";
 import { refreshTrack, spotify } from "../assets/spotify";
-import Player from "../components/Player.vue";
+import LoggedIn from "../components/LoggedIn.vue";
 export default {
   setup() {
     const {
@@ -37,7 +26,9 @@ export default {
       currentTrack,
       playbackState,
       top,
+      devices,
     } = useUser();
+    let device = null;
     return {
       user,
       playlists,
@@ -48,10 +39,12 @@ export default {
       loginUrl,
       interval: null,
       songUpdate: null,
+      devices,
+      device,
     };
   },
   components: {
-    Player,
+    LoggedIn,
   },
   methods: {
     togglePlayback() {
@@ -61,6 +54,7 @@ export default {
         spotify.play();
       }
     },
+
     toPrevious() {
       spotify.skipToPrevious();
     },

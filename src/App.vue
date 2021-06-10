@@ -14,6 +14,7 @@ import useUser, {
   setPlaybackState,
   setIsSaved,
   setTop,
+  setDevices,
 } from "./modules/users";
 
 export default {
@@ -44,10 +45,13 @@ export default {
     spotify.getMyCurrentPlaybackState().then((res) => {
       setPlaybackState(res);
       setCurrentTrack(res.item);
-      const tracks = [res.item.id];
+      const tracks = [res.item?.id];
       spotify.containsMySavedTracks(tracks).then((res) => {
         setIsSaved(res);
       });
+    });
+    spotify.getMyDevices().then((res) => {
+      setDevices(res);
     });
   },
 };

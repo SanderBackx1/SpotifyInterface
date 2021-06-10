@@ -12,7 +12,9 @@
           {{ currentTrack?.artists.map((artist) => artist.name).join(", ") }}
         </h3>
 
-        <h3 class="title">{{ currentTrack?.name }}</h3>
+        <h3 class="title">
+          {{ currentTrack ? currentTrack?.name : "No track playing" }}
+        </h3>
       </div>
 
       <div class="like">
@@ -50,10 +52,11 @@ import { refreshTrack, spotify } from "../assets/spotify";
 import FastAverageColor from "fast-average-color";
 export default {
   setup() {
-    const { currentTrack, isSaved, top } = useUser();
+    const { currentTrack, isSaved, top, playlists } = useUser();
     return {
       currentTrack,
       isSaved,
+      playlists,
       top,
     };
   },
@@ -83,16 +86,6 @@ export default {
           console.log(e);
         });
     },
-  },
-  created() {
-    this.interval = setInterval(refreshTrack, 1000);
-  },
-  beforeDestroy() {
-    clearInterval(this.interval);
-  },
-
-  destroyed() {
-    clearInterval(this.interval);
   },
 };
 </script>

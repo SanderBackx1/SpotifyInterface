@@ -6,6 +6,27 @@ $gray: #333333;
   margin: 0;
   padding: 0;
 }
+.notrack {
+  height: 100vh;
+  display: flex;
+  color: $white;
+  align-items: center;
+  justify-content: center;
+  .notrack-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .select-wrapper {
+      display: flex;
+      align-items: center;
+      p {
+        margin-right: 1em;
+      }
+      margin-bottom: 2em;
+    }
+  }
+}
 .login {
   height: 100vh;
   width: 100vw;

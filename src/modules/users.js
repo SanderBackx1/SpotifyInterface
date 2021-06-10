@@ -12,6 +12,7 @@ const state = reactive({
   playbackState: null,
   isSaved: false,
   top: null,
+  devices: null,
 });
 
 export default function useUsers() {
@@ -56,4 +57,7 @@ export const setIsSaved = (result) => {
 };
 export const setTop = (top) => {
   state.top = top;
+};
+export const setDevices = (res) => {
+  state.devices = res?.devices;
 };
