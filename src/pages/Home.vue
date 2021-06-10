@@ -68,16 +68,6 @@ export default {
       spotify.skipToNext();
     },
   },
-  created() {
-    this.interval = setInterval(refreshTrack, 1000);
-  },
-  beforeDestroy() {
-    clearInterval(this.interval);
-  },
-
-  destroyed() {
-    clearInterval(this.interval);
-  },
 };
 </script>
 

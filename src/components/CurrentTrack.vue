@@ -46,7 +46,7 @@
 
 <script>
 import useUser from "../modules/users";
-import { spotify } from "../assets/spotify";
+import { refreshTrack, spotify } from "../assets/spotify";
 import FastAverageColor from "fast-average-color";
 export default {
   setup() {
@@ -84,6 +84,16 @@ export default {
           console.log(e);
         });
     },
+  },
+  created() {
+    this.interval = setInterval(refreshTrack, 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
+  },
+
+  destroyed() {
+    clearInterval(this.interval);
   },
 };
 </script>
